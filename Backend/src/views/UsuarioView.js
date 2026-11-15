@@ -23,6 +23,9 @@ class UsuarioView {
     eliminado(res) {
         return ApiResponse.success(res, null, { message: Messages.USER_DELETED });
     }
+    publico(usuario) {
+        return this.#sanitizar(usuario);
+    }
     #sanitizar(usuario) {
         const { contrasena, ...publico } = usuario;
         return publico;

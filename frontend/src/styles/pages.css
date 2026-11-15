@@ -1,0 +1,48 @@
+.page {
+  padding-block: clamp(24px, 4vw, 48px);
+}
+
+.page.page--narrow {
+  max-width: 560px;
+}
+
+.page.page--medium {
+  max-width: 860px;
+}
+
+.page__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.page__title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+.page__state {
+  display: flex;
+  justify-content: center;
+  padding: 48px 16px;
+  color: var(--color-muted);
+  text-align: center;
+}
+
+.page__stack {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.page__link {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.page__link a {
+  color: var(--color-wine);
+  font-weight: 600;
+}

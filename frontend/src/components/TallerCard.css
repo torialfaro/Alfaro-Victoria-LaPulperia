@@ -1,0 +1,29 @@
+.taller-card {
+  display: flex;
+  flex-direction: column;
+  font-size: clamp(0.7rem, 1.3vw, 0.95rem);
+}
+
+.taller-card__image {
+  width: 100%;
+  aspect-ratio: 145 / 160;
+  object-fit: cover;
+  margin-bottom: 6px;
+}
+
+.taller-card__title {
+  font-size: 1em;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.taller-card__info {
+  line-height: 1.3;
+}
+
+.taller-card__button {
+  align-self: center;
+  width: 72%;
+  margin-top: 10px;
+  border-radius: 6px;
+}

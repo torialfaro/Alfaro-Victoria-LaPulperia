@@ -1,5 +1,7 @@
+import { Roles } from '../enums/Roles.js';
+
 class Usuario {
-    constructor(id, nombre, apellido, nombreUsuario, direccion, correo, telefono, contrasena) {
+    constructor(id, nombre, apellido, nombreUsuario, direccion, correo, telefono, contrasena, rol = Roles.CLIENTE) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -8,6 +10,7 @@ class Usuario {
         this.correo = correo;
         this.telefono = telefono;
         this.contrasena = contrasena;
+        this.rol = rol;
     }
 
     signIn() {}

@@ -1,0 +1,64 @@
+import FormFields from './FormFields.jsx';
+import Button from './Button.jsx';
+import { USUARIO_CAMPOS, USUARIO_VACIO } from '../utils/constants.js';
+import { validarCampo, validarCampos } from '../utils/validators.js';
+import { useFormulario } from '../utils/useFormulario.js';
+
+const CAMPOS_PERFIL = USUARIO_CAMPOS.filter(({ name }) => name !== 'contrasena');
+
+// En edición una contraseña vacía significa "no cambiarla", así que no se envía.
+const omitirContrasenaVacia = ({ contrasena, ...resto }) => (contrasena === '' ? resto : { ...resto, contrasena });
+
+/**
+ * Formulario de datos de usuario para registrarse, crear (admin) o editar.
+ * En edición la contraseña es opcional porque la API nunca la devuelve.
+ */
+export default function UsuarioFormBody({
+  usuario = null,
+  conContrasena = true,
+  textoEnviar,
+  onSubmit,
+  onExito,
+  onCancel,
+}) {
+  const edicion = usuario !== null;
+  const campos = conContrasena ? USUARIO_CAMPOS : CAMPOS_PERFIL;
+  const opcionales = edicion ? ['contrasena'] : [];
+  const esOpcionalVacio = (name, valor) => opcionales.includes(name) && valor.trim() === '';
+
+  const { formRef, valores, errores, enviando, cambiar, salirDeCampo, enviar } = useFormulario({
+    valoresIniciales: Object.fromEntries(campos.map(({ name }) => [name, usuario?.[name] ?? USUARIO_VACIO[name]])),
+    validar: (datos) => validarCampos(campos, datos, { opcionales }),
+    validarCampo: (name, valor) => (esOpcionalVacio(name, valor) ? '' : validarCampo(name, valor)),
+    preparar: (datos) => (edicion && 'contrasena' in datos ? omitirContrasenaVacia(datos) : datos),
+    onSubmit,
+    onExito,
+  });
+
+  return (
+    <form ref={formRef} onSubmit={enviar} noValidate className="form">
+      <p className="form__note">Los campos marcados con * son obligatorios.</p>
+      <FormFields
+        campos={campos}
+        columnas={2}
+        valores={valores}
+        errores={errores}
+        onChange={cambiar}
+        onBlur={salirDeCampo}
+        disabled={enviando}
+        opcionales={opcionales}
+        pistas={edicion ? { contrasena: 'Déjala vacía para conservar la actual.' } : {}}
+      />
+      <div className="form-actions">
+        {onCancel && (
+          <Button variant="outline" onClick={onCancel} disabled={enviando}>
+            Cancelar
+          </Button>
+        )}
+        <Button type="submit" loading={enviando}>
+          {textoEnviar}
+        </Button>
+      </div>
+    </form>
+  );
+}

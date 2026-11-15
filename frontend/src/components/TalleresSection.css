@@ -1,0 +1,36 @@
+.talleres {
+  display: grid;
+  grid-template-columns: 3fr 1.05fr;
+  align-items: center;
+  gap: 6px;
+  padding: clamp(12px, 3vw, 24px) clamp(8px, 1.5vw, 16px);
+}
+
+.talleres__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.talleres__title {
+  font-size: clamp(1.75rem, 5.2vw, 4.5rem);
+  text-align: center;
+}
+
+@media (max-width: 560px) {
+  .talleres {
+    grid-template-columns: 1fr;
+  }
+
+  .talleres__title {
+    order: -1;
+  }
+
+  .talleres__list {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}

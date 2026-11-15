@@ -1,0 +1,23 @@
+.contact-item {
+  display: flex;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.85);
+}
+
+.contact-item__content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 4px;
+  font-size: clamp(0.7rem, 1.3vw, 0.95rem);
+  color: var(--color-white);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+a.contact-item__content:hover {
+  text-decoration: underline;
+}
+
+.contact-item__content svg {
+  flex-shrink: 0;
+}

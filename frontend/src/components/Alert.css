@@ -1,0 +1,23 @@
+.alert {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-left: 4px solid currentColor;
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-alt);
+}
+
+.alert--error {
+  color: var(--color-danger);
+}
+
+.alert--info {
+  color: var(--color-info);
+}
+
+.alert__text {
+  color: var(--color-text);
+}

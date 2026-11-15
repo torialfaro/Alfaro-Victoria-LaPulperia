@@ -1,0 +1,33 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form__note {
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+}
+
+.form-fields {
+  display: grid;
+  gap: 12px 16px;
+}
+
+.form-fields--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+@media (max-width: 560px) {
+  .form-fields--2 {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,59 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    filter 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.btn:hover:not(:disabled) {
+  filter: brightness(1.15);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn--sm {
+  padding: 6px 14px;
+  font-size: 0.8125rem;
+}
+
+.btn--md {
+  padding: 10px 20px;
+  font-size: 0.9375rem;
+}
+
+.btn--wine {
+  color: var(--color-white);
+  background: var(--color-wine-button);
+}
+
+.btn--olive {
+  color: var(--color-white);
+  background: var(--color-olive-button);
+}
+
+.btn--danger {
+  color: var(--color-white);
+  background: var(--color-danger);
+}
+
+.btn--outline {
+  color: var(--color-wine);
+  background: transparent;
+  border-color: var(--color-wine);
+}
+
+.btn--block {
+  width: 100%;
+}

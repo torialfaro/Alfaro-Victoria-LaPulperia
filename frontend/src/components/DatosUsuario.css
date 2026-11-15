@@ -1,0 +1,33 @@
+.datos-usuario {
+  display: grid;
+  gap: 0;
+  margin: 0;
+}
+
+.datos-usuario__fila {
+  display: grid;
+  grid-template-columns: minmax(120px, 1fr) 2fr;
+  gap: 4px 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.datos-usuario__fila:last-child {
+  border-bottom: 0;
+}
+
+.datos-usuario dt {
+  font-weight: 600;
+  color: var(--color-wine);
+}
+
+.datos-usuario dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 480px) {
+  .datos-usuario__fila {
+    grid-template-columns: 1fr;
+  }
+}

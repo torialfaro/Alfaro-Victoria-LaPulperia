@@ -1,0 +1,32 @@
+.nosotros {
+  display: grid;
+  grid-template-columns: 250fr 345fr;
+  gap: clamp(8px, 1.4vw, 14px);
+  padding: clamp(8px, 2vw, 16px) clamp(8px, 1.5vw, 16px);
+}
+
+.nosotros__text {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 2vw, 20px);
+  font-size: clamp(0.7rem, 1.35vw, 1rem);
+  line-height: 1.4;
+}
+
+.nosotros__title {
+  align-self: center;
+  font-size: clamp(1.9rem, 5.5vw, 4.8rem);
+}
+
+.nosotros__image {
+  width: 100%;
+  aspect-ratio: 345 / 215;
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+@media (max-width: 560px) {
+  .nosotros {
+    grid-template-columns: 1fr;
+  }
+}

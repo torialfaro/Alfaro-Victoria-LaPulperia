@@ -1,0 +1,39 @@
+.usuarios-table__wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.usuarios-table {
+  width: 100%;
+  min-width: 860px;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.usuarios-table th,
+.usuarios-table td {
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.usuarios-table thead th {
+  color: var(--color-white);
+  background: var(--color-wine);
+  white-space: nowrap;
+}
+
+.usuarios-table tbody th {
+  font-weight: 600;
+}
+
+.usuarios-table tbody tr:last-child > * {
+  border-bottom: 0;
+}
+
+.usuarios-table__actions {
+  display: flex;
+  gap: 8px;
+}

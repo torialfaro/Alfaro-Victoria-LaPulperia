@@ -1,5 +1,8 @@
 import { Messages } from '../enums/Messages.js';
-import { NotFoundError, ConflictError } from '../exceptions/AppError.js';
+import { Roles } from '../enums/Roles.js';
+import { NotFoundError, ConflictError, ForbiddenError } from '../exceptions/AppError.js';
+import { hashear } from './PasswordHasher.js';
+
 class UsuarioService {
     constructor(repositorio) {
         this.repositorio = repositorio;
@@ -10,19 +13,34 @@ class UsuarioService {
     obtenerPorId(id) {
         return this.#buscarPorId(id);
     }
+    buscarPorId(id) {
+        return this.repositorio.obtenerPorId(id);
+    }
+    buscarPorNombreUsuario(nombreUsuario) {
+        return this.repositorio.obtenerPorNombreUsuario(nombreUsuario);
+    }
     crear(datos) {
-        this.#validarUnicidad(datos);
-        return this.repositorio.crear(datos);
+        return this.#crearConRol(datos, Roles.CLIENTE);
+    }
+    asegurarAdministrador(datos) {
+        if (this.repositorio.existeConRol(Roles.ADMIN)) return null;
+        return this.#crearConRol(datos, Roles.ADMIN);
     }
 
     modificar(id, datos) {
         this.#buscarPorId(id);
         this.#validarUnicidad(datos, id);
-        return this.repositorio.actualizar(id, datos);
+        const cambios = datos.contrasena === undefined ? datos : { ...datos, contrasena: hashear(datos.contrasena) };
+        return this.repositorio.actualizar(id, cambios);
     }
     eliminar(id) {
-        this.#buscarPorId(id);
+        const usuario = this.#buscarPorId(id);
+        if (usuario.rol === Roles.ADMIN) throw new ForbiddenError(Messages.ADMIN_CANNOT_BE_DELETED);
         this.repositorio.eliminar(id);
+    }
+    #crearConRol(datos, rol) {
+        this.#validarUnicidad(datos);
+        return this.repositorio.crear({ ...datos, contrasena: hashear(datos.contrasena), rol });
     }
     #buscarPorId(id) {
         const usuario = this.repositorio.obtenerPorId(id);

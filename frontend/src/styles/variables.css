@@ -1,0 +1,30 @@
+:root {
+  --color-wine: #581014;
+  --color-wine-dark: #4c080c;
+  --color-wine-button: #581014;
+  --color-olive: #384010;
+  --color-olive-button: #3d4f22;
+  --color-orange: #c8501a;
+  --color-header-hover: #ffd28a;
+  --color-white: #ffffff;
+  --color-text: #1a1a1a;
+  --color-muted: #5c5c5c;
+  --color-border: #d6d0cb;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f7f2ec;
+  --color-danger: #a4161a;
+  --color-success: #2e6b2f;
+  --color-info: #2a4d7a;
+
+  --font-display: 'Rammetto One', 'Alfa Slab One', Georgia, serif;
+  --font-logo: 'Alfa Slab One', Georgia, serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.18);
+
+  --page-max-width: 1200px;
+  --page-gutter: clamp(16px, 4vw, 48px);
+  --header-height: 72px;
+}
