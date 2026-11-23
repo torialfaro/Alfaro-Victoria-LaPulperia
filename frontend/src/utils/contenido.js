@@ -33,7 +33,6 @@ export const NAV_LINKS = [
 export const NAV_CUENTA = {
   ingresar: { id: 'ingresar', label: 'Iniciar sesión', to: '/ingresar' },
   perfil: { id: 'perfil', to: '/perfil', icono: 'user', textoOculto: 'Mi perfil: ' },
-  usuarios: { id: 'usuarios', label: 'Ver usuarios', to: '/usuarios' },
 };
 
 export const HERO = {
@@ -59,6 +58,15 @@ export const NOSOTROS = {
   parrafo:
     'Bienvenidos a La Pulpería, un rincón vibrante y acogedor donde la arcilla y el color cobran vida. Naciendo de la pasión por la expresión artesanal, somos un taller de cerámica y arte dedicado a inspirar la creatividad en todas sus formas. En nuestro espacio ofrecemos un ambiente de aprendizaje comunitario donde cada alumno puede explorar su potencial artístico, ya sea modelando su primera pieza de cerámica o dándole pinceladas a un lienzo. Te invitamos a sumergirte en esta experiencia.',
   alt: 'el taller',
+  opiniones: [
+    { autor: 'Laura Scocozza', estrellas: 5, texto: 'Hermoso lugar para aprender cerámica, pintura y aparte en general 💜…' },
+    {
+      autor: 'Veri L',
+      estrellas: 5,
+      texto:
+        'Me cambio la vida. Espero cada miércoles para ir. Debbie es una maestra excepcional en lo humano y lo técnico. Muy bien equipado en cuanto a materiales constructivos y de coloracion, e instrumentos para trabajar la arcilla, moldes etc. Podes aprender todas las tecnicas. Buen clima de grupos y la mejor musica de fondo . Super recomiendo.',
+    },
+  ],
 };
 
 export const CONTACTO_TITULO = 'CONTACTANOS';
@@ -96,14 +104,14 @@ export const CONTACTOS = [
     icono: 'whatsapp',
     texto: '+54 911 4896 3652',
     etiqueta: 'WhatsApp',
-    href: 'https://wa.me/5491148963652',
+    href: 'https://wa.me/5491125592007',
   },
   {
     id: 'correo',
     icono: 'mail',
     texto: 'lapulperia@gmail.com',
     etiqueta: 'Correo electrónico',
-    href: 'mailto:lapulperia@gmail.com',
+    href: 'mailto:alfarofernandezvictoria@gmail.com',
   },
   {
     id: 'instagram',

@@ -25,6 +25,16 @@ export const Messages = Object.freeze({
     USER_UPDATED: 'Usuario modificado correctamente.',
     USER_DELETED: 'Usuario eliminado correctamente.',
 
+    TALLER_NOT_FOUND: 'El taller no existe.',
+    INSCRIPCION_NOT_FOUND: 'La inscripción no existe.',
+    INVALID_TALLER_ID: 'El id del taller es inválido.',
+    ALREADY_ENROLLED: 'Ya estás inscripto en este taller.',
+    NO_SLOTS: 'No quedan cupos disponibles en este taller. Te enviamos un mail con el detalle.',
+    ADMIN_CANNOT_ENROLL: 'El administrador no puede inscribirse en talleres.',
+    INSCRIPCION_CREATED: 'Inscripción realizada correctamente. Te enviamos un mail de confirmación.',
+    INSCRIPCION_CANCELLED: 'Inscripción cancelada correctamente.',
+    INVALID_COMMENTS: 'Los comentarios deben ser un texto de hasta 500 caracteres.',
+
     SERVER_RUNNING: 'API escuchando en el puerto',
 
     ROUTE_NOT_FOUND: 'La ruta solicitada no existe.',

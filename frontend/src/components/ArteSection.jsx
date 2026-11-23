@@ -1,5 +1,4 @@
 import SectionTitle from './SectionTitle.jsx';
-import Button from './Button.jsx';
 import { ARTE, IMAGENES } from '../utils/contenido.js';
 import './ArteSection.css';
 
@@ -14,9 +13,6 @@ export default function ArteSection() {
       </div>
       <div className="arte__media">
         <img src={IMAGENES.platos} alt={ARTE.altPlatos} />
-        <Button to="/#nosotros" variant="olive" size="sm" className="arte__button">
-          {ARTE.textoBoton}
-        </Button>
       </div>
       <div className="arte__media">
         <img src={IMAGENES.logo} alt={ARTE.altLogo} />

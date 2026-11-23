@@ -6,6 +6,22 @@
   max-width: 560px;
 }
 
+.page.page--wide {
+  width: 100%;
+  padding-inline: clamp(12px, 2vw, 28px);
+}
+
+.page__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn--icon {
+  padding: 8px;
+  border-radius: 50%;
+}
+
 .page.page--medium {
   max-width: 860px;
 }

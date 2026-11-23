@@ -13,8 +13,8 @@ export default function Home() {
     <>
       <Hero />
       <ArteSection />
-      <TalleresSection />
       <NosotrosSection />
+      <TalleresSection />
       <ContactSection />
     </>
   );

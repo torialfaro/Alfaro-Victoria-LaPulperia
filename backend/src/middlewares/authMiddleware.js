@@ -20,6 +20,11 @@ export function crearAuthMiddleware(tokenService, usuarioService) {
         next();
     }
 
+    function soloCliente(req, res, next) {
+        if (req.usuario.rol === Roles.ADMIN) throw new ForbiddenError(Messages.ADMIN_CANNOT_ENROLL);
+        next();
+    }
+
     function adminOMismo(req, res, next) {
         if (req.usuario.rol !== Roles.ADMIN && req.usuario.id !== req.params.id) {
             throw new ForbiddenError(Messages.FORBIDDEN);
@@ -34,5 +39,5 @@ export function crearAuthMiddleware(tokenService, usuarioService) {
         next();
     }
 
-    return { autenticar, soloAdmin, adminOMismo, sinCambioDeContrasenaPropio };
+    return { autenticar, soloAdmin, soloCliente, adminOMismo, sinCambioDeContrasenaPropio };
 }

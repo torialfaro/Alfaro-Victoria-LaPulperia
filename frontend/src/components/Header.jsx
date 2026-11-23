@@ -10,7 +10,7 @@ const SECCIONES_HOME = NAV_LINKS.filter(({ id }) => id !== 'inicio').map(({ id }
 
 export default function Header({ overlay = false }) {
   const { pathname } = useLocation();
-  const { usuario, cargando, esAdmin } = useAuth();
+  const { usuario, cargando } = useAuth();
   const [desplazado, setDesplazado] = useState(false);
   const enHome = pathname === '/';
   const [seccion, fijarSeccion] = useSeccionActiva(SECCIONES_HOME, { activo: enHome, porDefecto: 'inicio' });
@@ -26,7 +26,6 @@ export default function Header({ overlay = false }) {
   const esActivo = ({ id, to }) => (enHome ? id === seccion : to === pathname);
 
   const items = [...NAV_LINKS];
-  if (esAdmin) items.push(NAV_CUENTA.usuarios);
 
   let cuenta = null;
   if (usuario) cuenta = { ...NAV_CUENTA.perfil, label: usuario.nombreUsuario };

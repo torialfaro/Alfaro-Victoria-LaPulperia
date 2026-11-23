@@ -6,6 +6,10 @@ import { hashear } from './PasswordHasher.js';
 class UsuarioService {
     constructor(repositorio) {
         this.repositorio = repositorio;
+        this.oyentesEliminacion = [];
+    }
+    alEliminar(oyente) {
+        this.oyentesEliminacion.push(oyente);
     }
     obtenerTodos() {
         return this.repositorio.obtenerTodos();
@@ -37,6 +41,7 @@ class UsuarioService {
         const usuario = this.#buscarPorId(id);
         if (usuario.rol === Roles.ADMIN) throw new ForbiddenError(Messages.ADMIN_CANNOT_BE_DELETED);
         this.repositorio.eliminar(id);
+        this.oyentesEliminacion.forEach((oyente) => oyente(id));
     }
     #crearConRol(datos, rol) {
         this.#validarUnicidad(datos);

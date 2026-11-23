@@ -1,6 +1,6 @@
 .contact-item {
   display: flex;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid #8fae8c;
 }
 
 .contact-item__content {
@@ -9,7 +9,7 @@
   gap: 8px;
   padding: 5px 4px;
   font-size: clamp(0.7rem, 1.3vw, 0.95rem);
-  color: var(--color-white);
+  color: #1f3d27;
   text-decoration: none;
   overflow-wrap: anywhere;
 }

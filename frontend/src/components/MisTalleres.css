@@ -1,0 +1,16 @@
+﻿.mis-talleres__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), clamp(200px, 22.85vw, 329px)));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mis-talleres__list > li {
+  display: flex;
+}
+.mis-talleres__list > li > .taller-card {
+  width: 100%;
+}
+

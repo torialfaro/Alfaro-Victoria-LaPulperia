@@ -1,108 +1,47 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import SectionTitle from '../components/SectionTitle.jsx';
-import Card from '../components/Card.jsx';
 import Button from '../components/Button.jsx';
-import DatosUsuario from '../components/DatosUsuario.jsx';
-import UsuarioFormBody from '../components/UsuarioFormBody.jsx';
-import CambiarContrasenaForm from '../components/CambiarContrasenaForm.jsx';
-import ConfirmDialog from '../components/ConfirmDialog.jsx';
+import Icon from '../components/Icon.jsx';
+import MisTalleres from '../components/MisTalleres.jsx';
+import TalleresAdmin from '../components/TalleresAdmin.jsx';
+import ConfiguracionPerfil from '../components/ConfiguracionPerfil.jsx';
 import { useAuth } from '../utils/useAuth.js';
-import { useToast } from '../utils/useToast.js';
 import { usePageTitle } from '../utils/useRouteEffects.js';
 
 export default function Perfil() {
   usePageTitle('Mi perfil | La Pulpería');
-  const toast = useToast();
-  const { usuario, esAdmin, cerrarSesion, actualizarPerfil, eliminarCuenta } = useAuth();
-  const [editando, setEditando] = useState(false);
-  const [confirmando, setConfirmando] = useState(false);
-  const [eliminando, setEliminando] = useState(false);
-  const edicionRef = useRef(null);
-  const botonEditarRef = useRef(null);
-  const yaEdito = useRef(false);
-
-  useEffect(() => {
-    if (editando) {
-      yaEdito.current = true;
-      edicionRef.current?.querySelector('input')?.focus();
-    } else if (yaEdito.current) {
-      botonEditarRef.current?.focus();
-    }
-  }, [editando]);
-
-  const salir = () => cerrarSesion();
-
-  const confirmarEliminacion = async () => {
-    setEliminando(true);
-    try {
-      await eliminarCuenta();
-      cerrarSesion({ silencioso: true });
-    } catch (error) {
-      toast.error(error.message);
-      setEliminando(false);
-    }
-  };
+  const { esAdmin } = useAuth();
+  const [configurando, setConfigurando] = useState(false);
 
   return (
-    <div className="page page-container page--medium">
+    <div className="page page--wide">
       <div className="page__header">
         <SectionTitle as="h1" color="wine" className="page__title">
-          Mi perfil
+          {configurando ? 'Configuración' : 'Mi perfil'}
         </SectionTitle>
-        <Button variant="outline" onClick={salir}>
-          Cerrar sesión
-        </Button>
-      </div>
-
-      <div className="page__stack">
-        <Card id="titulo-datos" title="Mis datos">
-          {editando ? (
-            <div ref={edicionRef}>
-              <UsuarioFormBody
-                usuario={usuario}
-                conContrasena={false}
-                textoEnviar="Guardar cambios"
-                onSubmit={actualizarPerfil}
-                onExito={() => setEditando(false)}
-                onCancel={() => setEditando(false)}
-              />
-            </div>
+        <div className="page__actions">
+          {esAdmin && !configurando && <Button to="/usuarios">Ver todos los usuarios</Button>}
+          {configurando ? (
+            <Button variant="outline" onClick={() => setConfigurando(false)}>
+              Volver
+            </Button>
           ) : (
-            <>
-              <DatosUsuario usuario={usuario} />
-              <div className="form-actions">
-                <Button ref={botonEditarRef} onClick={() => setEditando(true)}>
-                  Editar datos
-                </Button>
-              </div>
-            </>
+            <Button
+              variant="outline"
+              className="btn--icon"
+              aria-label="Configuración"
+              title="Configuración"
+              onClick={() => setConfigurando(true)}
+            >
+              <Icon name="settings" size={26} />
+            </Button>
           )}
-        </Card>
-
-        <Card id="titulo-contrasena" title="Cambiar contraseña">
-          <CambiarContrasenaForm />
-        </Card>
-
-        {!esAdmin && (
-          <Card id="titulo-eliminar" title="Eliminar cuenta">
-            <p>Si eliminas tu cuenta se borrarán tus datos y no podrás recuperarlos.</p>
-            <div className="form-actions">
-              <Button variant="danger" onClick={() => setConfirmando(true)}>
-                Eliminar mi cuenta
-              </Button>
-            </div>
-          </Card>
-        )}
+        </div>
       </div>
 
-      <ConfirmDialog
-        open={confirmando}
-        title="Eliminar cuenta"
-        message="¿Seguro que quieres eliminar tu cuenta? Esta acción no se puede deshacer."
-        loading={eliminando}
-        onConfirm={confirmarEliminacion}
-        onCancel={() => setConfirmando(false)}
-      />
+      {configurando && <ConfiguracionPerfil />}
+      {!configurando && esAdmin && <TalleresAdmin />}
+      {!configurando && !esAdmin && <MisTalleres />}
     </div>
   );
 }

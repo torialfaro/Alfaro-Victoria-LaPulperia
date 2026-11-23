@@ -32,15 +32,6 @@
   object-fit: cover;
 }
 
-.arte__button {
-  position: absolute;
-  bottom: 8px;
-  left: 50%;
-  min-width: 55%;
-  transform: translateX(-50%);
-  background: rgba(55, 72, 30, 0.92);
-}
-
 @media (max-width: 560px) {
   .arte {
     grid-template-columns: 1fr;
@@ -50,4 +41,8 @@
     min-height: 0;
     aspect-ratio: 1 / 1;
   }
+}
+
+.arte__media img {
+  border-radius: var(--radius-md);
 }

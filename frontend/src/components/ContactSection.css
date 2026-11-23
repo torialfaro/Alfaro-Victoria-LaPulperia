@@ -3,15 +3,15 @@
   grid-template-columns: 1.1fr 1.4fr;
   align-items: center;
   gap: 16px 24px;
-  margin: 6px clamp(8px, 1.5vw, 16px) clamp(8px, 1.5vw, 16px);
-  padding: clamp(10px, 2vw, 24px) clamp(14px, 2.5vw, 32px);
-  background: var(--color-orange);
+  margin: clamp(40px, 8vw, 96px) clamp(8px, 1.5vw, 16px) clamp(8px, 1.5vw, 16px);
+  padding: clamp(16px, 3vw, 36px) clamp(14px, 2.5vw, 32px);
+  background: #dbe8d6;
   border-radius: 4px;
 }
 
 .contact-section__title {
   font-size: clamp(1.75rem, 4.4vw, 3.75rem);
-  color: var(--color-wine-dark);
+  color: #1f3d27;
 }
 
 .contact-section__list {
